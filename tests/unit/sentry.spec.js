@@ -1,5 +1,5 @@
 const Sentry = require('@sentry/node');
-const diagnostics = require('../../../index');
+const diagnostics = require('../../index');
 
 jest.mock('@sentry/node');
 
