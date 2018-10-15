@@ -14,7 +14,7 @@ describe('The Sentry builder', () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    Sentry.init.mockClear();
   });
 
   it('constructs a Sentry instance successfully, with valid parameters', () => {

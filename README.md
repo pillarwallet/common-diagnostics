@@ -12,7 +12,7 @@ Run `npm run generateReadme` to parse the code for JSDoc comment blocks and recr
 Run `npm i @pillarwallet/common-diagnostics`
 
 ## Getting Started
-###Sentry
+### Sentry
 In order to use Sentry, you must first instruct Sentry on what environments it is allowed
 to be instantiated on. Sentry will not start automatically, you must "opt-in" to use it -
 this prevents Sentry running and reporting on environments that do not require monitoring such
@@ -64,14 +64,14 @@ based libraries and frameworks is located [here](https://docs.sentry.io/platform
 ## Members
 
 <dl>
-<dt><a href="#setConfiguration">setConfiguration</a> ⇒ <code>Object.&lt;SentryBuilder&gt;</code></dt>
+<dt><a href="#setConfiguration">setConfiguration</a> ⇒ <code>Object.&lt;sentryBuilder&gt;</code></dt>
 <dd><p>A setter for the Sentry configuration object.</p>
 </dd>
-<dt><a href="#setWhitelistedEnvironments">setWhitelistedEnvironments</a> ⇒ <code>Object.&lt;SentryBuilder&gt;</code></dt>
+<dt><a href="#setWhitelistedEnvironments">setWhitelistedEnvironments</a> ⇒ <code>Object.&lt;sentryBuilder&gt;</code></dt>
 <dd><p>A setter for the allowed environments Sentry
 is allowed to run on.</p>
 </dd>
-<dt><a href="#start">start</a> ⇒ <code>Object.&lt;Sentry&gt;</code></dt>
+<dt><a href="#start">start</a> ⇒ <code>Object.&lt;Sentry&gt;</code> | <code>false</code></dt>
 <dd><p>Attempts to start and return an instance of Sentry, providing
 that all the conditions are correct.</p>
 </dd>
@@ -79,30 +79,30 @@ that all the conditions are correct.</p>
 
 <a name="setConfiguration"></a>
 
-## setConfiguration ⇒ <code>Object.&lt;SentryBuilder&gt;</code>
+## setConfiguration ⇒ <code>Object.&lt;sentryBuilder&gt;</code>
 A setter for the Sentry configuration object.
 
 **Kind**: global variable  
 
-| Type | Description |
-| --- | --- |
-| <code>Object</code> | A Sentry configuration object. |
+| Param | Type | Description |
+| --- | --- | --- |
+| incomingConfiguration | <code>Object</code> | A Sentry configuration object. |
 
 <a name="setWhitelistedEnvironments"></a>
 
-## setWhitelistedEnvironments ⇒ <code>Object.&lt;SentryBuilder&gt;</code>
+## setWhitelistedEnvironments ⇒ <code>Object.&lt;sentryBuilder&gt;</code>
 A setter for the allowed environments Sentry
 is allowed to run on.
 
 **Kind**: global variable  
 
-| Type | Description |
-| --- | --- |
-| <code>Array</code> | An array of allowed environment names. |
+| Param | Type | Description |
+| --- | --- | --- |
+| incomingWhitelistedEnvironments | <code>Array</code> | An array of allowed environment names. |
 
 <a name="start"></a>
 
-## start ⇒ <code>Object.&lt;Sentry&gt;</code>
+## start ⇒ <code>Object.&lt;Sentry&gt;</code> \| <code>false</code>
 Attempts to start and return an instance of Sentry, providing
 that all the conditions are correct.
 
