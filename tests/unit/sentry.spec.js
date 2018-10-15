@@ -1,4 +1,4 @@
-const Sentry = require('@sentry/node');
+const sentry = require('@sentry/node');
 const diagnostics = require('../../index');
 
 jest.mock('@sentry/node');
@@ -8,49 +8,47 @@ describe('The Sentry builder', () => {
 
   beforeEach(() => {
     config = {
-      dns: 'https://soemthing/09876543210',
+      dsn: 'https://something/09876543210',
       debug: true,
     };
   });
 
   afterEach(() => {
-    Sentry.init.mockClear();
+    sentry.init.mockClear();
   });
 
   it('constructs a Sentry instance successfully, with valid parameters', () => {
-    const sentryInstance = diagnostics.SentryBuilder.setWhitelistedEnvironments(
-      ['test'],
-    )
+    const sentryInstance = diagnostics.sentryBuilder
+      .setWhitelistedEnvironments(['test'])
       .setConfiguration(config)
       .start();
 
-    expect(Sentry.init).toHaveBeenCalledWith(config);
+    expect(sentry.init).toHaveBeenCalledWith(config);
     expect(sentryInstance.SDK_NAME).toBe('sentry.javascript.node');
   });
 
   it('does not start Sentry if the no confiuration provided at all', () => {
-    diagnostics.SentryBuilder.setWhitelistedEnvironments()
+    diagnostics.sentryBuilder
+      .setWhitelistedEnvironments()
       .setConfiguration()
       .start();
 
-    expect(Sentry.init).not.toHaveBeenCalled();
+    expect(sentry.init).not.toHaveBeenCalled();
   });
 
   it('does not start Sentry if the desired environment is not specified', () => {
-    diagnostics.SentryBuilder.setWhitelistedEnvironments([
-      'qa',
-      'narnia',
-      'production',
-    ])
+    diagnostics.sentryBuilder
+      .setWhitelistedEnvironments(['qa', 'narnia', 'production'])
       .setConfiguration(config)
       .start();
 
-    expect(Sentry.init).not.toHaveBeenCalled();
+    expect(sentry.init).not.toHaveBeenCalled();
   });
 
   it('throws an error if a non array passed to setWhitelistedEnvironments', () => {
     try {
-      diagnostics.SentryBuilder.setWhitelistedEnvironments('qa, dev')
+      diagnostics.sentryBuilder
+        .setWhitelistedEnvironments('qa, dev')
         .setConfiguration(config)
         .start();
     } catch (e) {
@@ -62,7 +60,8 @@ describe('The Sentry builder', () => {
 
   it('throws an error if a non object passed to setConfiguration', () => {
     try {
-      diagnostics.SentryBuilder.setWhitelistedEnvironments()
+      diagnostics.sentryBuilder
+        .setWhitelistedEnvironments()
         .setConfiguration([])
         .start();
     } catch (e) {

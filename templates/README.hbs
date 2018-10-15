@@ -49,7 +49,7 @@ const sentryConfiguration = {
  * Sentry. Once start is successfully called, an instance of Sentry
  * is return to the app.
  */
-const Sentry = diagnostics.SentryBuilder.setWhitelistedEnvironments(
+const sentry = diagnostics.sentryBuilder.setWhitelistedEnvironments(
       whitelistedEnvironments,
     )
       .setConfiguration(sentryConfiguration)

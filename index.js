@@ -1,5 +1,5 @@
-const SentryBuilder = require('./lib/sentry');
+const sentryBuilder = require('./lib/sentry');
 
 module.exports = {
-  SentryBuilder,
+  sentryBuilder,
 };
