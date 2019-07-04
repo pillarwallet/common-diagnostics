@@ -46,6 +46,7 @@ jobs:
           name: Publish package to Artifactory
           command: npm publish
 
+
 workflows:
   version: 2
   test_and_publish:
