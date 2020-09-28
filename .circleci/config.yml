@@ -11,8 +11,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Authenticate with registry
-        command: echo "//registry.npmjs.org/:_authToken=$PILLAR_NPM_TOKEN" > ~/common-diagnostics/.npmrc
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$PILLAR_NPM_TOKEN" > ~/common-diagnostics/.npmrc
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -44,9 +44,9 @@ jobs:
             git config user.email "devops@pillarproject.io"
             git config user.name "Issabot"
             npm version $(node -e "const currentVersion=require('./package.json').version; const firstTwoDots=currentVersion.substring(0, currentVersion.lastIndexOf('.')+1); console.log(firstTwoDots);")$CIRCLE_BUILD_NUM
-            - run:
-              name: Authenticate with registry
-              command: echo "//registry.npmjs.org/:_authToken=$PILLAR_NPM_TOKEN" > ~/common-diagnostics/.npmrc
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$PILLAR_NPM_TOKEN" > ~/common-diagnostics/.npmrc
       - run:
           name: Publish package to Artifactory
           command: npm publish
