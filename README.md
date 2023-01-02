@@ -108,3 +108,4 @@ that all the conditions are correct.
 
 **Kind**: global variable  
 
+test
